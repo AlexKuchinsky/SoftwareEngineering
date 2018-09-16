@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="TunisianBrightRedFeska">#763A30</color>
+    <color name="TunisianRedFeska">#691320</color>
+    <color name="TunisianDarkRedFeska">#5A1616</color>
+    <color name="TunisianBrightSandScarf">#DBD4B7</color>
+    <color name="TunisianBrightGrayScarf">#E1DBCE</color>
+    <color name="TunisianDarkSandScarf">#867F62</color>
+    <color name="TunisianGrayScarf">#797B6D</color>
+
+</resources>
