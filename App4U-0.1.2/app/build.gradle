@@ -7,20 +7,30 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'MyAndroidKey'
+            keyPassword 'alex170298'
+            storeFile file('C:/Users/Lenovo/android.jks')
+            storePassword 'alex170298'
+        }
+        config1 {
+        }
+    }
     compileSdkVersion 27
     flavorDimensions "default"
     defaultConfig {
         applicationId "com.example.alex.app4u"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 2
-        versionName "0.1.1"
+        versionCode 3
+        versionName "0.1.2"
         setProperty("archivesBaseName", "$applicationId-$versionName")
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
@@ -30,11 +40,11 @@ android {
 
     }
     productFlavors {
-        develop{
+        develop {
             manifestPlaceholders = [ROTATION_PREF: "unspecified"]
             versionNameSuffix = "-dev"
         }
-        main {
+        stable {
             manifestPlaceholders = [ROTATION_PREF: "portrait"]
         }
     }
