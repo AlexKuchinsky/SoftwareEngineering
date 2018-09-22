@@ -68,3 +68,5 @@ build
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+
+keystore.properties
