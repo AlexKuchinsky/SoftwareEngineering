@@ -6,6 +6,36 @@ apply plugin: 'kotlin-android-extensions'
 
 apply from: "$project.rootDir/gradle/script-git-version.gradle"
 
+def getVersionCode = { ->
+    try {
+        def code = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'tag', '--list'
+            standardOutput = code
+        }
+        return code.toString().split("\n").size()
+    }
+    catch (ignored) {
+        return -1;
+    }
+}
+
+def getNumberOfcommits
+def getVersionName = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--tags', '--dirty'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    }
+    catch (ignored) {
+        return null;
+    }
+}
+
+
 android {
     compileSdkVersion 28
     flavorDimensions "default"
@@ -13,9 +43,9 @@ android {
         applicationId "com.example.lenovo.app4u"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode gitVersionCode
-        versionName "0.1.3"
-        setProperty("archivesBaseName", "$applicationId-$versionName-$versionCode")
+        versionCode getVersionCode()
+        versionName getVersionName()
+        setProperty("archivesBaseName", "$applicationId--$versionName--$versionCode")
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
