@@ -8,6 +8,7 @@
     android:background="@color/TunisianBrightSandScarf">
 
     <RelativeLayout
+        android:id="@+id/mainActivityLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

@@ -8,10 +8,10 @@ def getVersionCode = { ->
     try {
         def code = new ByteArrayOutputStream()
         exec {
-            commandLine 'git', 'tag', '--list'
+            commandLine 'git', 'rev-list', '--all', '--count'
             standardOutput = code
         }
-        return code.toString().split("\n").size()
+        return code.toString().toInteger()
     }
     catch (ignored) {
         return -1;
@@ -25,7 +25,9 @@ def getVersionName = { ->
             commandLine 'git', 'describe', '--tags'
             standardOutput = stdout
         }
-        return stdout.toString().trim()
+        String result = stdout.toString().trim()
+        return result.substring(0, result.indexOf('-'))+"."+
+                result.substring(result.indexOf('-')+1, result.lastIndexOf('-'))
     }
     catch (ignored) {
         return null;
