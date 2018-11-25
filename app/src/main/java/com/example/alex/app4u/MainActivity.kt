@@ -17,6 +17,7 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 //import org.ajoberstar.grgit.Grgit
+//lajsdlfk
 
 class MainActivity : AppCompatActivity() {
     private val MY_PERMISSIONS_REQUEST_READ_PHONE_STATE = 10
